@@ -3,13 +3,12 @@ from pgzhelper import *
 from pgzrun import go
 
 #definindo o tamanho da tela
-TITLE = 'Flappy Kirby'
 WIDTH = 640
 HEIGHT = 480
-
+TITLE = 'Flappy Kirby'
 
 #terreno
-ground = Actor('teste')
+ground = Actor('background')
 #dizendo os limites do eixo x e y
 ground.x = 320
 ground.y = 465
@@ -18,38 +17,27 @@ ground.y = 465
 kirby = Actor('kirby')
 kirby.x = 75
 kirby.y = 100
-#as imagens que vão ficar no loop
 kirby.images =['kirby','kirby2','kirby3']
-#quantos frames por segundo
-kirby.fps = 6
+kirby.fps = 50
 
-# gravity = velocidade que o kirby cai
-# speed =velocidade que o kirby move pra cima e pra baixo
-gravity = 0.1
-kirby.speed = 1
 #update é onde acontece as animações, mudanças de frames
 def update():
-#     #animação do kirby
-    kirby.animate()
-    #atualização do movimento do kirby pra baixo mais a velocidade
+    #animação do kirby
+   
     
-    # kirby.y = kirby.y + kirby.speed esse codigo é a mesma coisa do de baixo
-    kirby.y += kirby.speed
-    # kirby.speed = kirby.speed + gravity  mesmo exemplo
-    kirby.speed += gravity
-
-
+    
+    
 #desenhar na tela
 def draw():
     #bg é o nome da imagem de background, 0,0 são as coordenadas x e y, pra fazer o desenho do começo da tela
     screen.blit('background', (0,0))
-
-    #desenhar o terreno
+    
+    #desenhar o terreno 
     ground.draw()
     #desenhar o placar
     screen.draw.text('Score: ', color=(255, 0, 127), midtop=(50, 10),shadow=(0.5 , 0.5),  scolor=(0,0,0), fontsize=30)
     #desenhar o kirby
     kirby.draw()
-
-
+    
+    
 go()
